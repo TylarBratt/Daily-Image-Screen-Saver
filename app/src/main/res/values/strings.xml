@@ -19,4 +19,6 @@
     <string name="name3">name3</string>
     <string name="search">Search</string>
     <string name="enter_a_date">Enter a Date</string>
+    <string name="preference_file_key" translatable="false">file</string>
+    <string name="help">Help</string>
 </resources>

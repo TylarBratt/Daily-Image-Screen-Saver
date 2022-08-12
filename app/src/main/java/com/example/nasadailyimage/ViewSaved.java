@@ -46,6 +46,11 @@ public class ViewSaved extends AppCompatActivity{
         rc.setLayoutManager(layoutManager);
         rc.setAdapter(adapter);
 
+        if(MainActivity.help == 1) {
+            Toast toast = Toast.makeText(ViewSaved.this, "Please select a date from the list or enter and search for one.", Toast.LENGTH_LONG);
+            toast.show();
+        }
+
         rc.addOnItemTouchListener(
                 new RecyclerItemClickListener(this, rc, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override

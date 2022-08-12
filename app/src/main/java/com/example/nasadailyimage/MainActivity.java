@@ -13,7 +13,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -22,6 +24,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -50,16 +53,32 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     public static Database database;
+    public static int help = 0;
     String globalDate;
     String globalImage;
     Boolean canSave = true;
     byte[] globalCompressedImage = null;
+    String filePath = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         String baseUrl = "https://api.nasa.gov/planetary/apod?api_key=DgPLcIlnmN0Cwrzcg3e9NraFaYLIDI68Ysc6Zh3d&date=";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         database = new Database(this);
+
+
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+                if (sharedPreferences.contains("filePath") && filePath == null) {
+                    filePath = sharedPreferences.getString("filePath", null);
+                }if(filePath == null) {
+                    filePath = Environment.getExternalStorageDirectory().toString();
+        } else {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("filePath", Environment.getExternalStorageDirectory().toString());
+                }
+
 
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -136,6 +155,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Button save = findViewById(R.id.button);
         Button view = findViewById(R.id.button2);
         Button viewSaved = findViewById(R.id.button3);
+        Button helper = findViewById(R.id.button5);
         save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (canSave = true) {
@@ -174,10 +194,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                              startActivity(viewSaved);
 
                                          }
-                                     }
+                                     });
+        helper.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                help = 1;
+                Snackbar.make(v,"Please select a date from the Calendar or you can view saved images.", Snackbar.LENGTH_LONG).show();
+            }
+        });
 
-
-        );
     }
 
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -276,6 +301,10 @@ private class NasaImages extends AsyncTask<String, Integer, String> {
         TextView tview = findViewById(R.id.Image);
         tview.setText("Image: " + fromDoInBackground);
         globalImage = fromDoInBackground;
+        if (help == 1) {
+            Toast toast = Toast.makeText(MainActivity.this, "Please Select either Save Or View Image.", Toast.LENGTH_LONG);
+            toast.show();
+        }
         Log.i("HTTP", "Done");
     }
 
@@ -327,6 +356,7 @@ private class NasaImages extends AsyncTask<String, Integer, String> {
                 }
                 ByteArrayOutputStream bos = new ByteArrayOutputStream();
                 bmp.compress(Bitmap.CompressFormat.PNG, 100, bos);
+
 
                 FileSystem filesystem = new FileSystem();
                 try {

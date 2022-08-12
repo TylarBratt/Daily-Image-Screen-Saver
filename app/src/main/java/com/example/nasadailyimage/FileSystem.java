@@ -1,6 +1,8 @@
 package com.example.nasadailyimage;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,8 +21,13 @@ import java.io.IOException;
 
 public class FileSystem {
 
+
+
     @RequiresApi(api = Build.VERSION_CODES.R)
     public void saveToFile(Bitmap bitmap, String date) throws FileNotFoundException {
+
+
+
     File path = Environment.getExternalStorageDirectory();
     System.out.println(path.toString());
     File f = new File(path, date + ".png");

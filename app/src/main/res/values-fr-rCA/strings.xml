@@ -20,4 +20,5 @@
     <string name="name3">nom3</string>
     <string name="search">chercher</string>
     <string name="enter_a_date">entrer une date</string>
+    <string name="help">Aider</string>
 </resources>
