@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Nasa Daily Image</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="SavedImage">Saved Image</string>
+    <string name="home">Home</string>
+    <string name="exit">Exit</string>
+    <string name="helloWorld">hello World</string>
+    <string name="version_1_1">Version 1.1</string>
+    <string name="select">Select</string>
+    <string name="image">Image:</string>
+    <string name="url">URL:</string>
+    <string name="date">Date:</string>
+    <string name="save_image">Save Image</string>
+    <string name="view_image">View image</string>
+    <string name="saved_images">Saved Images</string>
+    <string name="name1">name1</string>
+    <string name="name2">name2</string>
+    <string name="name3">name3</string>
+    <string name="search">Search</string>
+    <string name="enter_a_date">Enter a Date</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <item android:id="@+id/drawerItem1"
+        android:title="@string/exit"
+
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/drawerItem2"
+        android:title="@string/SavedImage"
+
+        android:orderInCategory="50"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/drawerItem3"
+        android:title="@string/home"
+
+        android:orderInCategory="25"
+        app:showAsAction="always"/>
+</menu>

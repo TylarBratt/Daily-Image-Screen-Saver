@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Image quotidienne de la NASA</string>
+    <string name="open">Ouvert</string>
+    <string name="close">proche</string>
+    <string name="SavedImage">image enregistrée</string>
+    <string name="home">Maison</string>
+    <string name="exit">Sortir</string>
+    <string name="helloWorld">Bonjour le monde</string>
+    <string name="version_1_1">Version 1.1</string>
+    <string name="select">Sélectionner</string>
+    <string name="image">Image:</string>
+    <string name="url">URL:</string>
+    <string name="date">Date:</string>
+    <string name="save_image">Sélectionner Image</string>
+    <string name="view_image">View image</string>
+    <string name="saved_images">Voir Images</string>
+    <string name="name1">nom1</string>
+    <string name="name2">nom2</string>
+    <string name="name3">nom3</string>
+    <string name="search">chercher</string>
+    <string name="enter_a_date">entrer une date</string>
+</resources>
